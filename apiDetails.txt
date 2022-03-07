@@ -1,0 +1,136 @@
+------------------------------------------------------------------
+Check Passbook
+URL:
+127.0.0.1:8000/wallet/passbook/
+request(json):
+{
+    "userId":1,
+    "startDate" : "2022/03/07 10:35:19",
+    "endDate" : "2022/03/07 12:27:39"
+}
+response(json):
+{
+    "status": "SUCCESS",
+    "content": [
+        {
+            "id": 1,
+            "userId": 1,
+            "secUserId": 1,
+            "txnType": 0,
+            "status": true,
+            "totTxnAmt": 14.559999999999999,
+            "totAccAmt": 836.8,
+            "createdAt": "2022/03/07 10:35:19",
+            "txnId": null
+        },
+        {
+            "id": 14,
+            "userId": 1,
+            "secUserId": 1,
+            "txnType": 0,
+            "status": false,
+            "totTxnAmt": 43.36,
+            "totAccAmt": 789.5599999999998,
+            "createdAt": "2022/03/07 11:57:06",
+            "txnId": null
+        },
+        {
+            "id": 15,
+            "userId": 1,
+            "secUserId": 1,
+            "txnType": 1,
+            "status": true,
+            "totTxnAmt": 43.36,
+            "totAccAmt": 832.9199999999998,
+            "createdAt": "2022/03/07 12:27:39",
+            "txnId": null
+        }
+    ]
+}
+------------------------------------------------------------------
+Check Avail Balance
+URL:
+127.0.0.1:8000/wallet/totalAmount/1
+request(path variable i.e. user id):
+127.0.0.1:8000/wallet/totalAmount/{userId}
+response(json):
+{
+    "status": "SUCCESS",
+    "content": 952.1599999999999
+}
+------------------------------------------------------------------
+Wallet to Wallet Transaction from first user's wallet to second user's wallet
+URL:
+127.0.0.1:8000/wallet/walletTransaction
+request(json):
+{
+    "fromUserId":1,
+    "toUserId":2,
+    "amount":54.2
+}
+response(json):
+{
+    "status": "SUCCESS",
+    "content": "SUCCESS"
+}
+------------------------------------------------------------------
+Bank to Wallet Transaction from first user's bank to first user's wallet
+URL:
+127.0.0.1:8000/wallet/bankTransaction
+request(json):
+{
+    "fromUserId":1,
+    "toUserId":1,
+    "amount":54.2
+}
+response(json):
+{
+    "status": "SUCCESS",
+    "content": "SUCCESS"
+}
+------------------------------------------------------------------
+creation of user account(Sign Up)
+URL:
+127.0.0.1:8000/user/create
+request(json):
+{
+    "userName": "sumitanand098",
+    "password": "abc123",
+    "firstName": "sumit",
+    "lastName": "anand",
+    "email": "sumitanand098@gmail.com"
+}
+response(json):
+{
+    "status": "SUCCESS",
+    "content": "SUCCESS"
+}
+------------------------------------------------------------------
+Sign in of a user 
+URL:
+127.0.0.1:8000/user/sign-in
+request(json):
+{
+    "userName": "sumitanand098",
+    "password": "abc123"
+}
+response(json):
+{
+    "status": "SUCCESS",
+    "content": {
+        "userId": 10,
+        "userName": "sumitanand098",
+        "password": "{bcrypt}$2a$10$pOLD2tERAsAOP6WIJu/62eTVP.GnFf5WNLWrGu6bNNdHVPEzxtcNS",
+        "firstName": "sumit",
+        "lastName": null,
+        "email": null,
+        "accessToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdW1pdGFuYW5kMDk4Iiwic2NvcGVzIjoiQURNSU4iLCJpYXQiOjE2NDY2NTA2MzIsImV4cCI6MTY0NjY1MjQzMn0.6HPcteTXQeKIcly-GyZ0ojWc3UDNBrzipjtoHlrBZyM"
+    }
+}
+------------------------------------------------------------------
+pass in Headers (postman)
+Authorization:Wallet <accessToken>
+for e.g.
+Authorization:Wallet eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdW1pdGFuYW5kMDk4Iiwic2NvcGVzIjoiQURNSU4iLCJpYXQiOjE2NDY2NTA2MzIsImV4cCI6MTY0NjY1MjQzMn0.6HPcteTXQeKIcly-GyZ0ojWc3UDNBrzipjtoHlrBZyM
+
+*Authorization is not required for create & signIn API
