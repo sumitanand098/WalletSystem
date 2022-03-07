@@ -12,38 +12,26 @@ import javax.persistence.Table;
 @Table( name = "wallet_passbook" )
 public class WalletPassbookEntity {
 
-	@Id
-	@SequenceGenerator( name = "seq_wallet", sequenceName = "seq_wallet",
-			allocationSize = 1 )
-	@GeneratedValue( strategy = GenerationType.SEQUENCE,
-			generator = "seq_wallet" )
-	@Column( name = "ID" )
-	private int id;
+	@Id @SequenceGenerator( name = "seq_wallet", sequenceName = "seq_wallet",
+			allocationSize = 1 ) @GeneratedValue( strategy = GenerationType.SEQUENCE,
+					generator = "seq_wallet" ) @Column( name = "ID" ) private int id;
 
-	@Column( name = "user_id" )
-	private int userId;
+	@Column( name = "user_id" ) private int userId;
 
-	@Column( name = "second_user_id" )
-	private int secUserId;
+	@Column( name = "second_user_id" ) private int secUserId;
 
 	// cr = 1 || dr = 0
-	@Column( name = "txn_type" )
-	private int txnType;
+	@Column( name = "txn_type" ) private int txnType;
 
-	@Column( name = "status" )
-	private boolean status;
+	@Column( name = "status" ) private boolean status;
 
-	@Column( name = "tot_tx_amt" )
-	private double totTxnAmt;
+	@Column( name = "tot_tx_amt" ) private double totTxnAmt;
 
-	@Column( name = "tot_acc_amt" )
-	private double totAccAmt;
+	@Column( name = "tot_acc_amt" ) private double totAccAmt;
 
-	@Column( name = "created_at" )
-	private String createdAt;
+	@Column( name = "created_at" ) private String createdAt;
 
-	@Column( name = "txn_id" )
-	private String txnId;
+	@Column( name = "txn_id" ) private String txnId;
 
 	public int getId() {
 		return id;

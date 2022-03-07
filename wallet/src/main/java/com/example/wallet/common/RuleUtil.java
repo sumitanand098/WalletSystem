@@ -1,9 +1,9 @@
 package com.example.wallet.common;
 
 public class RuleUtil {
-	
+
 	public double actualBalance( double amount ) {
-		return amount/Constants.Charges.TotalAmt;
+		return amount / Constants.Charges.TotalAmt;
 	}
 
 	public double calculateCommission( double amount ) {
@@ -19,10 +19,5 @@ public class RuleUtil {
 	public double calculateExtra( double amount ) {
 		return amount - actualBalance( amount );
 	}
-
-//	public double calculateTotalAmount( double amount ) {
-//		amount = actualBalance( amount );
-//		return amount + calculateExtra( amount );
-//	}
 
 }

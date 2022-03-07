@@ -13,8 +13,7 @@ import com.example.wallet.service.PassbookDetails;
 @Service
 public class PassbookDetailsImpl implements PassbookDetails {
 
-	@Autowired
-	WalletDetailsRepository walletDetailsRepository;
+	@Autowired WalletDetailsRepository walletDetailsRepository;
 
 	@Override
 	public List<WalletPassbookEntity> passbookDetails( int userId ) {
@@ -23,7 +22,8 @@ public class PassbookDetailsImpl implements PassbookDetails {
 
 	@Override
 	public List<WalletPassbookEntity> passbookRangeDetails( UserPassbook userPassbook ) {
-		return walletDetailsRepository.getPassbookRangeDetailsById( userPassbook.getUserId(), userPassbook.getStartDate(), userPassbook.getEndDate() );
+		return walletDetailsRepository.getPassbookRangeDetailsById( userPassbook.getUserId(),
+				userPassbook.getStartDate(), userPassbook.getEndDate() );
 	}
 
 }

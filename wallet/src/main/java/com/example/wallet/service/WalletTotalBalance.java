@@ -1,8 +1,7 @@
 package com.example.wallet.service;
 
-
 public interface WalletTotalBalance {
-	
-	double totalBalance(int userId);
-	
+
+	double totalBalance( int userId );
+
 }

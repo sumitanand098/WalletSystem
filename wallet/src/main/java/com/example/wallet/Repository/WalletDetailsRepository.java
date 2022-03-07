@@ -21,6 +21,7 @@ public interface WalletDetailsRepository extends JpaRepository<WalletPassbookEnt
 	List<Double> getTotalAmountById( @Param( "userId" ) int userId );
 
 	@Query( value = "from WalletPassbookEntity T where T.userId = :userId and T.createdAt >= :startDate and T.createdAt <= :endDate" )
-	List<WalletPassbookEntity> getPassbookRangeDetailsById( @Param( "userId" ) int userId, @Param( "startDate" ) String startDate, @Param( "endDate" ) String endDate );
+	List<WalletPassbookEntity> getPassbookRangeDetailsById( @Param( "userId" ) int userId,
+		@Param( "startDate" ) String startDate, @Param( "endDate" ) String endDate );
 
 }

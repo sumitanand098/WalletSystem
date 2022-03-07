@@ -8,6 +8,7 @@ import com.example.wallet.db.dto.TransactionDetailsEntity;
 
 @Repository
 @Transactional( readOnly = false )
-public interface TransactionRepository extends JpaRepository<TransactionDetailsEntity, Integer> {
+public interface TransactionRepository
+		extends JpaRepository<TransactionDetailsEntity, Integer> {
 
 }

@@ -19,14 +19,11 @@ public class Account {
 
 	DateTimeFormatter dtf = DateTimeFormatter.ofPattern( Constants.WalletDatePattern );
 
-	@Autowired
-	WalletTotalBalanceImpl walletTotalBalance;
+	@Autowired WalletTotalBalanceImpl walletTotalBalance;
 
-	@Autowired
-	TransactionRepository transactionRepository;
+	@Autowired TransactionRepository transactionRepository;
 
-	@Autowired
-	WalletDetailsRepository walletDetailsRepository;
+	@Autowired WalletDetailsRepository walletDetailsRepository;
 
 	private static double balance;
 
@@ -42,7 +39,8 @@ public class Account {
 		try {
 			balance = totBalance( txnData.getFromUserId() );
 			if ( balance >= txnData.getAmount() ) {
-				TransactionDetailsEntity transactionDetailsEntity = new TransactionDetailsEntity();
+				TransactionDetailsEntity transactionDetailsEntity =
+						new TransactionDetailsEntity();
 				walletPassbookEntity.setUserId( txnData.getFromUserId() );
 				walletPassbookEntity.setSecUserId( txnData.getToUserId() );
 				walletPassbookEntity.setTxnType( Constants.Zero );
@@ -53,14 +51,16 @@ public class Account {
 				walletPassbookEntity.setTotAccAmt( balance - txnData.getAmount() );
 				walletId = walletDetailsRepository.save( walletPassbookEntity ).getId();
 				Thread.sleep( 1000 );
-				
+
 				transactionDetailsEntity.setWalletId( walletId );
 				transactionDetailsEntity.setTxnAmt( txnData.getAmount() );
-				transactionDetailsEntity.setTxnCharge( ru.calculateCharge( txnData.getAmount() ) );
-				transactionDetailsEntity.setTxnComsn( ru.calculateCommission( txnData.getAmount() ) );
+				transactionDetailsEntity
+						.setTxnCharge( ru.calculateCharge( txnData.getAmount() ) );
+				transactionDetailsEntity
+						.setTxnComsn( ru.calculateCommission( txnData.getAmount() ) );
 				transactionRepository.save( transactionDetailsEntity );
 				Thread.sleep( 1000 );
-//				failExceptionTest();
+				//				failExceptionTest();
 				deposit( txnData );
 				return Constants.ResponseConstants.SUCCESS;
 			}
@@ -78,10 +78,10 @@ public class Account {
 		}
 	}
 
-//	private void failExceptionTest() {
-//		int[] arr = { 0 };
-//		System.out.println( arr[3] );
-//	}
+	//	private void failExceptionTest() {
+	//		int[] arr = { 0 };
+	//		System.out.println( arr[3] );
+	//	}
 
 	public String deposit( TransactionData txnData ) {
 		RuleUtil ru = new RuleUtil();
@@ -95,7 +95,8 @@ public class Account {
 			LocalDateTime now = LocalDateTime.now();
 			walletPassbookEntity.setCreatedAt( dtf.format( now ) );
 			walletPassbookEntity.setTotTxnAmt( ru.actualBalance( txnData.getAmount() ) );
-			walletPassbookEntity.setTotAccAmt( balance + ru.actualBalance( txnData.getAmount() ) );
+			walletPassbookEntity
+					.setTotAccAmt( balance + ru.actualBalance( txnData.getAmount() ) );
 			walletDetailsRepository.save( walletPassbookEntity );
 			Thread.sleep( 1000 );
 			return Constants.ResponseConstants.SUCCESS;
@@ -105,10 +106,10 @@ public class Account {
 			return Constants.ResponseConstants.FAILURE;
 		}
 	}
-	
+
 	public boolean bankBalanceCheck() {
 		// code to check balance from bank account
 		return true;
 	}
-	
+
 }

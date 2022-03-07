@@ -12,25 +12,17 @@ import javax.persistence.Table;
 @Table( name = "transaction_details" )
 public class TransactionDetailsEntity {
 
-	@Id
-	@SequenceGenerator( name = "seq_txn", sequenceName = "seq_txn",
-			allocationSize = 1 )
-	@GeneratedValue( strategy = GenerationType.SEQUENCE,
-			generator = "seq_txn" )
-	@Column( name = "ID" )
-	private int id;
+	@Id @SequenceGenerator( name = "seq_txn", sequenceName = "seq_txn",
+			allocationSize = 1 ) @GeneratedValue( strategy = GenerationType.SEQUENCE,
+					generator = "seq_txn" ) @Column( name = "ID" ) private int id;
 
-	@Column( name = "wallet_id" )
-	private int walletId;
+	@Column( name = "wallet_id" ) private int walletId;
 
-	@Column( name = "txn_amt" )
-	private double txnAmt;
+	@Column( name = "txn_amt" ) private double txnAmt;
 
-	@Column( name = "txn_charge" )
-	private double txnCharge;
+	@Column( name = "txn_charge" ) private double txnCharge;
 
-	@Column( name = "txn_comsn" )
-	private double txnComsn;
+	@Column( name = "txn_comsn" ) private double txnComsn;
 
 	public int getId() {
 		return id;
