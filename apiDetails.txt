@@ -89,6 +89,22 @@ response(json):
     "content": "SUCCESS"
 }
 ------------------------------------------------------------------
+Rebate (return transaction) to Wallet Transaction from second user's wallet to first user's wallet
+URL:
+127.0.0.1:8000/wallet/rebateTransaction
+request(json):
+{
+    "drWalletId":10,
+    "crWalletId":11,
+    "amount":54.2,
+    "txnId":"f7560b9d-464b-4a8c-b088-21ff9309fa1c"
+}
+response(json):
+{
+    "status": "SUCCESS",
+    "content": "SUCCESS"
+}
+------------------------------------------------------------------
 creation of user account(Sign Up)
 URL:
 127.0.0.1:8000/user/create
