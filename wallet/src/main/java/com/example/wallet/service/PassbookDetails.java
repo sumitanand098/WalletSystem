@@ -2,13 +2,14 @@ package com.example.wallet.service;
 
 import java.util.List;
 
+import com.example.wallet.db.PassbookDataDetails;
 import com.example.wallet.db.UserPassbook;
-import com.example.wallet.db.dto.WalletPassbookEntity;
+import com.example.wallet.db.dto.WalletTxnPassbookEntity;
 
 public interface PassbookDetails {
 
-	List<WalletPassbookEntity> passbookDetails( int userId );
+	List<PassbookDataDetails> passbookDetails( int userId );
 
-	List<WalletPassbookEntity> passbookRangeDetails( UserPassbook userPassbook );
+	List<WalletTxnPassbookEntity> passbookRangeDetails( UserPassbook userPassbook );
 
 }

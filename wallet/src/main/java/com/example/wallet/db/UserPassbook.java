@@ -2,18 +2,16 @@ package com.example.wallet.db;
 
 public class UserPassbook {
 
-	private int userId;
-
+	private int walletId;
 	private String startDate;
-
 	private String endDate;
 
-	public int getUserId() {
-		return userId;
+	public int getWalletId() {
+		return walletId;
 	}
 
-	public void setUserId( int userId ) {
-		this.userId = userId;
+	public void setWalletId( int walletId ) {
+		this.walletId = walletId;
 	}
 
 	public String getStartDate() {

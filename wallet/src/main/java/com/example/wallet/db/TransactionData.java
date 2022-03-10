@@ -2,26 +2,25 @@ package com.example.wallet.db;
 
 public class TransactionData {
 
-	private int fromUserId;
-
-	private int toUserId;
-
+	private int drWalletId;
+	private int crWalletId;
 	private double amount;
+	private String txnId;
 
-	public int getFromUserId() {
-		return fromUserId;
+	public int getDrWalletId() {
+		return drWalletId;
 	}
 
-	public void setFromUserId( int fromUserId ) {
-		this.fromUserId = fromUserId;
+	public void setDrWalletId( int drWalletId ) {
+		this.drWalletId = drWalletId;
 	}
 
-	public int getToUserId() {
-		return toUserId;
+	public int getCrWalletId() {
+		return crWalletId;
 	}
 
-	public void setToUserId( int toUserId ) {
-		this.toUserId = toUserId;
+	public void setCrWalletId( int crWalletId ) {
+		this.crWalletId = crWalletId;
 	}
 
 	public double getAmount() {
@@ -32,4 +31,11 @@ public class TransactionData {
 		this.amount = amount;
 	}
 
+	public String getTxnId() {
+		return txnId;
+	}
+
+	public void setTxnId( String txnId ) {
+		this.txnId = txnId;
+	}
 }

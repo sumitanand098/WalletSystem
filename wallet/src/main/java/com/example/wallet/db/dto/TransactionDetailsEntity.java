@@ -9,19 +9,16 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table( name = "transaction_details" )
+@Table( name = "txn_details" )
 public class TransactionDetailsEntity {
 
-	@Id @SequenceGenerator( name = "seq_txn", sequenceName = "seq_txn",
+	@Id @SequenceGenerator( name = "seq_txn_details", sequenceName = "seq_txn_details",
 			allocationSize = 1 ) @GeneratedValue( strategy = GenerationType.SEQUENCE,
-					generator = "seq_txn" ) @Column( name = "ID" ) private int id;
+					generator = "seq_txn_details" ) @Column( name = "ID" ) private int id;
 
-	@Column( name = "wallet_id" ) private int walletId;
-
+	@Column( name = "dr_wallet_id" ) private int walletId;
 	@Column( name = "txn_amt" ) private double txnAmt;
-
 	@Column( name = "txn_charge" ) private double txnCharge;
-
 	@Column( name = "txn_comsn" ) private double txnComsn;
 
 	public int getId() {
