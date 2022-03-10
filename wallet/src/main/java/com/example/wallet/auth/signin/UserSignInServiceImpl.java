@@ -33,6 +33,8 @@ public class UserSignInServiceImpl implements UserSignInService, UserDetailsServ
 		signInDetail.setPassword( userWallet.getUserPwd() );
 		signInDetail.setUserId( userWallet.getId() );
 		signInDetail.setFirstName( userWallet.getFirstName() );
+		signInDetail.setLastName( userWallet.getLastName() );
+		signInDetail.setEmail( userWallet.getEmail() );
 
 		return signInDetail;
 	}
@@ -54,7 +56,7 @@ public class UserSignInServiceImpl implements UserSignInService, UserDetailsServ
 
 	private Collection< ? extends GrantedAuthority> getAuthorities( UserWalletEntity user ) {
 		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-		authorities.add( new SimpleGrantedAuthority( Constants.Role ) );
+		authorities.add( new SimpleGrantedAuthority( Constants.ROLE ) );
 		return authorities;
 	}
 }

@@ -1,5 +1,7 @@
 package com.example.wallet.db.dto;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,28 +11,21 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table( name = "wallet_passbook" )
-public class WalletPassbookEntity {
+@Table( name = "wallet_txn_passbook" )
+public class WalletTxnPassbookEntity {
 
-	@Id @SequenceGenerator( name = "seq_wallet", sequenceName = "seq_wallet",
+	@Id @SequenceGenerator( name = "seq_txn_passbook", sequenceName = "seq_txn_passbook",
 			allocationSize = 1 ) @GeneratedValue( strategy = GenerationType.SEQUENCE,
-					generator = "seq_wallet" ) @Column( name = "ID" ) private int id;
-
-	@Column( name = "user_id" ) private int userId;
-
-	@Column( name = "second_user_id" ) private int secUserId;
-
+					generator = "seq_txn_passbook" ) @Column( name = "ID" ) private int id;
+	@Column( name = "dr_wallet_id" ) private int drWalletId;
+	@Column( name = "cr_wallet_id" ) private int crWalletId;
 	// cr = 1 || dr = 0
 	@Column( name = "txn_type" ) private int txnType;
-
-	@Column( name = "status" ) private boolean status;
-
+	@Column( name = "txn_status" ) private int status;
 	@Column( name = "tot_tx_amt" ) private double totTxnAmt;
-
 	@Column( name = "tot_acc_amt" ) private double totAccAmt;
-
-	@Column( name = "created_at" ) private String createdAt;
-
+	@Column( name = "created_at", insertable = false,
+			updatable = false ) private Date createdAt;
 	@Column( name = "txn_id" ) private String txnId;
 
 	public int getId() {
@@ -41,20 +36,20 @@ public class WalletPassbookEntity {
 		this.id = id;
 	}
 
-	public int getUserId() {
-		return userId;
+	public int getDrWalletId() {
+		return drWalletId;
 	}
 
-	public void setUserId( int userId ) {
-		this.userId = userId;
+	public void setDrWalletId( int drWalletId ) {
+		this.drWalletId = drWalletId;
 	}
 
-	public int getSecUserId() {
-		return secUserId;
+	public int getCrWalletId() {
+		return crWalletId;
 	}
 
-	public void setSecUserId( int secUserId ) {
-		this.secUserId = secUserId;
+	public void setCrWalletId( int crWalletId ) {
+		this.crWalletId = crWalletId;
 	}
 
 	public int getTxnType() {
@@ -65,11 +60,11 @@ public class WalletPassbookEntity {
 		this.txnType = txnType;
 	}
 
-	public boolean isStatus() {
+	public int getStatus() {
 		return status;
 	}
 
-	public void setStatus( boolean status ) {
+	public void setStatus( int status ) {
 		this.status = status;
 	}
 
@@ -89,11 +84,11 @@ public class WalletPassbookEntity {
 		this.totAccAmt = totAccAmt;
 	}
 
-	public String getCreatedAt() {
+	public Date getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt( String createdAt ) {
+	public void setCreatedAt( Date createdAt ) {
 		this.createdAt = createdAt;
 	}
 
